@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mypersonalwebsite:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mypersonalwebsite:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PORT=8000
+    volumes:
+      - ./data:/app/data  # Assuming you want to persist some data
+
+networks:
+  default:
+    driver: bridge
